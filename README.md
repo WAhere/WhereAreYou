@@ -1,2 +1,2 @@
 # WhereAreYou
-an initial project
+an initial project(read me).
