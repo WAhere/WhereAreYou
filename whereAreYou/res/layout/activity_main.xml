@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/b"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入主控手机号码："
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:textColor="@android:color/holo_orange_light" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/e1"
+        android:drawableLeft="@android:drawable/ic_menu_mylocation"
+        android:paddingLeft="30dp"
+        android:text="监控手机"
+        android:textColor="@android:color/holo_blue_light"
+        android:textColorHint="@android:color/holo_blue_light"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnSms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/e2"
+        android:drawableLeft="@android:drawable/sym_action_chat"
+        android:paddingLeft="30dp"
+        android:text="监控短信"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnCallBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/e3"
+        android:drawableLeft="@android:drawable/sym_call_outgoing"
+        android:paddingLeft="30dp"
+        android:text="回拨电话"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnRing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/e4"
+        android:drawableLeft="@android:drawable/ic_popup_reminder"
+        android:paddingLeft="30dp"
+        android:text="响铃"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnVibra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/e5"
+        android:drawableLeft="@android:drawable/ic_popup_sync"
+        android:paddingLeft="32dp"
+        android:text="震动"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnListen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_green_light"
+        android:text="开始监控"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="24sp" />
+
+</LinearLayout>
