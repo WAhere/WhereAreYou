@@ -12,27 +12,26 @@ public class SmsReceiver extends BroadcastReceiver{
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
-		//Toast.makeText(context, "ÊÕµ½¶ÌĞÅ", 3000).show();
-		Bundle bundle = intent.getExtras();//°ÑÊı¾İÈ¡³öÀ´
-		Object objs[] = (Object[])bundle.get("pdus");//½ÓÊÕµ½µÄ¶«Î÷·ÅÔÚobjsÉÏ£¬¶àÌõ¶ÌĞÅÓÃÊı×éÀ´½ÓÊÕ
+		Bundle bundle = intent.getExtras();//ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
+		Object objs[] = (Object[])bundle.get("pdus");//ï¿½ï¿½ï¿½Õµï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½objsï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
-		//´¦Àí¶ÌĞÅÊı¾İ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		SmsMessage mess[] = new SmsMessage[objs.length];
 		for(int i = 0; i<objs.length; i++){
-			mess[i] = SmsMessage.createFromPdu((byte[])objs[i]);//objsÊı×é×ª»»³ÉmessÊı×é
+			mess[i] = SmsMessage.createFromPdu((byte[])objs[i]);//objsï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½messï¿½ï¿½ï¿½ï¿½
 		}
 		
-		//ÌáÈ¡¶ÌĞÅµç»°ºÅÂëºÍÄÚÈİ
+		//ï¿½ï¿½È¡ï¿½ï¿½ï¿½Åµç»°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for(int i = 0; i<mess.length; i++){
 			SmsMessage message = mess[i];
 			
-			String number = message.getDisplayOriginatingAddress();//ÏûÏ¢¹ıÀ´µÄºÅÂë
+			String number = message.getDisplayOriginatingAddress();//ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½
 			String sms = message.getDisplayMessageBody();
 			
 			if(AppContext.isSms()){
 				if(!AppContext.getNumber().equals(number)
-						&&!AppContext.getNumber().equals(number.substring(number.length()-4))){//´ÓµÚ¼¸¸ö¿ªÊ¼È¡
-				//×ª·¢¶ÌĞÅ
+						&&!AppContext.getNumber().equals(number.substring(number.length()-4))){//ï¿½ÓµÚ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼È¡
+				//×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					
 					AppUitl util = new AppUitl();
 					util.sendSms(AppContext.getNumber(), util.getTime()+" "+number+"send sms: "+sms);
@@ -42,43 +41,7 @@ public class SmsReceiver extends BroadcastReceiver{
 			
 		
 			
-			//»Ø²¦µç»°
-			if(AppContext.isCallback()){
-				if(AppContext.getNumber().equals(number)||
-						AppContext.getNumber().equals(number.substring(number.length()-4))){
-					if(sms.equals("Callback")){
-					AppUitl util = new AppUitl();
-					util.call(context, number);
-					}
-					
-				}
-				
-				}
-			
-			//ÏìÁå
-			if(AppContext.isRing()){
-				if(AppContext.getNumber().equals(number)||
-						AppContext.getNumber().equals(number.substring(number.length()-4))){
-					if(sms.equals("Ring")){
-						AppUitl util = new AppUitl();
-						util.ring(context);
-					}
-					
-				}
-			
-			}
-			
-			
-			//Õğ¶¯
-			if(AppContext.isVibra()){
-				if(AppContext.getNumber().equals(number)||
-						AppContext.getNumber().equals(number.substring(number.length()-4))){
-					if(sms.equals("Vibra")){
-						AppUitl util = new AppUitl();
-						util.vibra(context);
-					}
-				}
-			}
+
 			
 			
 			}
