@@ -11,7 +11,7 @@ import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 
 public class AppUitl {
-	//��绰
+	//打电话的功能模块
 	public void call(Context context, String number){
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_CALL);
@@ -20,13 +20,15 @@ public class AppUitl {
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);///////////////////
 	}
-	//������
+	//发短信的共模块
 	public void sendSms(String number , String sms){
 		SmsManager manager = SmsManager.getDefault();
 		manager.sendTextMessage(number, null, sms, null, null);
 	}
 	
-	//��ȡʱ��
+	
+	
+	//获取系统的时间
 	public String getTime(){
 		String time = " ";
 		Date date = new Date();
