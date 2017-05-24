@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.widget.Toast;	//导入小部件信息提示框
 
-public class SmsReceiver extends BroadcastReceiver{
-
+public class SmsReceiver extends BroadcastReceiver
+{
 	@Override
-	public void onReceive(Context context, Intent intent) {
+	//context与intent就是发送广播时的:收到context，执行intent.
+	public void onReceive(Context context, Intent intent) 
+	{
 		// TODO Auto-generated method stub
 		//Toast.makeText(context, "收到短信", 3000).show();
 		Bundle bundle = intent.getExtras();		//把数据取出来
@@ -18,99 +20,79 @@ public class SmsReceiver extends BroadcastReceiver{
 		
 		//处理短信数据
 		SmsMessage mess[] = new SmsMessage[objs.length];
-		for(int i = 0; i<objs.length; i++){
+		for(int i = 0; i<objs.length; i++)
+		{
 			mess[i] = SmsMessage.createFromPdu((byte[])objs[i]);
-			//objs数组转换成mess数组
+			//objs的数组转换成mess的数组
 		}
 		//提取短信电话号码和内容
-		for(int i = 0; i<mess.length; i++){
+		for(int i = 0; i<mess.length; i++)
+		{
 			SmsMessage message = mess[i];
 			
-			String number = message.getDisplayOriginatingAddress();		//消息过来的号码
+			//消息过来的号码
+			String number = message.getDisplayOriginatingAddress();
 			String sms = message.getDisplayMessageBody();
 			
-			if(AppContext.isSms()){
+			if(AppContext.isSms())
+			{
 				if(!AppContext.getNumber().equals(number)
-						&&!AppContext.getNumber().equals(number.substring(number.length()-4))){//从第几个开始取
+						&& !AppContext.getNumber().equals(number.substring(number.length()-4)))
+				{//从第几个开始取
 					//转发短信	
 					AppUitl util = new AppUitl();
-					util.sendSms(AppContext.getNumber(), util.getTime()+" "+number+"send sms: "+sms);
-					
+					util.sendSms(AppContext.getNumber(), util.getTime()+
+							" "+number+"send sms: "+sms);	
 				}
 			}
 		
-			//回拨电话
-			if (AppContext.isCallback()) {
-				if (AppContext.getNumber
-
-				().equals(number) ||
-
-				AppContext.getNumber().equals(number.substring
-
-				(number.length() - 4))) {
-					if (sms.equals
-
-					("Callback")) {
-						AppUitl util =
-
-						new AppUitl();
-						util.call
-
-						(context, number);
+			//当选中回拨电话时
+			if (AppContext.isCallback()) 
+			{
+				if (AppContext.getNumber().equals(number) ||
+						AppContext.getNumber().
+						equals(number.substring
+						(number.length() - 4))) 
+				{
+					if (sms.equals("Callback")) 
+					{
+						AppUitl util =new AppUitl();
+						util.call(context, number);
 					}
-
 				}
-
 			}
 			
-
-			//响铃
-			if (AppContext.isRing()) {
-				if (AppContext.getNumber
-
-				().equals(number) ||
-
-				AppContext.getNumber().equals(number.substring
-
-				(number.length() - 4))) {
-					if (sms.equals
-
-					("Ring")) {
-						AppUitl
-
-						util = new AppUitl();
-
+			//当选择响铃时
+			if (AppContext.isRing()) 
+			{
+				if (AppContext.getNumber().equals(number) ||
+						AppContext.getNumber().
+						equals(number.substring
+						(number.length() - 4))) 
+				{
+					if (sms.equals("Ring")) 
+					{
+						AppUitl util = new AppUitl();
 						util.ring(context);
 					}
-
 				}
-
 			}
 
-			// 震动
-			if (AppContext.isVibra()) {
-				if (AppContext.getNumber
-
-				().equals(number) ||
-
-				AppContext.getNumber().equals(number.substring
-
-				(number.length() - 4))) {
-					if (sms.equals
-
-					("Vibra")) {
-						AppUitl
-
-						util = new AppUitl();
-
+			// 当选择振动时
+			if (AppContext.isVibra()) 
+			{
+				if (AppContext.getNumber().equals(number) ||
+						AppContext.getNumber().
+						equals(number.substring
+						(number.length() - 4))) 
+				{
+					if (sms.equals("Vibra")) 
+					{
+						AppUitl util = new AppUitl();
 						util.vibra(context);
 					}
 				}
 			}
-			
-			
-			}
-		}	
-	}
-
-
+		}
+	}	
+}
