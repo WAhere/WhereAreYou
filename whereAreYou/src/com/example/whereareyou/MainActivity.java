@@ -74,46 +74,27 @@ public class MainActivity extends Activity {
 				}
 		});
 		
-
-		
-		btnRing.setOnClickListener(new OnClickListener() {
+		btnCallBack.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(AppContext.isRing()){
-					AppContext.setRing(false);
-					btnRing.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-					btnRing.setText("����");
-					btnRing.setBackgroundResource(R.drawable.e4);
-				}else{
-					AppContext.setRing(true);
-					btnRing.setTextColor(Color.BLACK);
-					btnRing.setText("ֹͣ����");
-					btnRing.setBackgroundResource(R.drawable.e42);
-				}
+				if(AppContext.isCallback()){
+					AppContext.setCallback(false);
+					btnCallBack.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
+					btnCallBack.setText("�ز��绰");
+					btnCallBack.setBackgroundResource(R.drawable.e3);
+					}else{
+						AppContext.setCallback(true);
+						btnCallBack.setTextColor(Color.BLACK);
+						btnCallBack.setText("ֹͣ�ز��绰");
+						btnCallBack.setBackgroundResource(R.drawable.e32);
+					}
 				
 			}
 		});
 		
-		btnVibra.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if(AppContext.isVibra()){
-					AppContext.setVibra(false);
-					btnVibra.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));//////////////
-					btnVibra.setText("��");
-					btnVibra.setBackgroundResource(R.drawable.e5);
-				}else{
-					AppContext.setVibra(true);
-					btnVibra.setTextColor(Color.BLACK);
-					btnVibra.setText("ֹͣ��");
-					btnVibra.setBackgroundResource(R.drawable.e52);
-				}
-			}
-		});
+		
 		
 		btnListen.setOnClickListener(new OnClickListener() {
 			
