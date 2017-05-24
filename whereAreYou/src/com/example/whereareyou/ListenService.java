@@ -13,22 +13,19 @@ public class ListenService extends Service{
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-    	// TODO Auto-generated method stub
-    	Toast.makeText(this, "·şÎñÒÑ¾­Æô¶¯", Toast.LENGTH_LONG).show();
+    	Toast.makeText(this, "æœåŠ¡å·²ç»å¯åŠ¨", Toast.LENGTH_LONG).show();
     	if(AppContext.isPhone()){
-    		//¼à¿Øµç»°
+    		//è¿™ä¸ªæ˜¯ç›‘æ§ç”µè¯çš„åŠŸèƒ½
     		final TelephonyManager manager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
     		manager.listen(new PhoneStateListener(){
     			public void onCallStateChanged(int state, String incomingNumber) {
     				if(state == TelephonyManager.CALL_STATE_RINGING){
-    					//·¢¶ÌĞÅ¸øÖ÷¿ØÊÖ»ú
-    					//Toast.makeText(ListenService.this, "ÓĞµç»°ÁË", 3000).show();
+    					//å‘çŸ­ä¿¡ï¼Œç»™ä¸»æ§æ‰‹æœº
     					if(!AppContext.getNumber().substring(AppContext.getNumber().length()-4).equals(incomingNumber)
     							&&!AppContext.getNumber().substring(AppContext.getNumber().length()-4).equals(incomingNumber.substring(incomingNumber.length()-4))){
     					AppUitl util = new AppUitl();
@@ -43,16 +40,13 @@ public class ListenService extends Service{
     		, PhoneStateListener.LISTEN_CALL_STATE);
     	}
     	if(AppContext.isSms()||AppContext.isCallback()||AppContext.isRing()||AppContext.isVibra()){
-    		//¼à¿Ø¶ÌĞÅ
-    		//Toast.makeText(this, "¶ÌĞÅÒÑ¾­Æô¶¯", Toast.LENGTH_LONG).show();
+    		//ç›‘æ§ çŸ­ä¿¡
     		SmsReceiver receiver = new SmsReceiver();
     		IntentFilter filter = new IntentFilter();
     		filter.addAction("android.provider.Telephony.SMS_RECEIVED");  		
     		filter.setPriority(Integer.MAX_VALUE);
     		registerReceiver(receiver,filter);
-    		
-    		
-    		
+    			
     		
     	}
     		

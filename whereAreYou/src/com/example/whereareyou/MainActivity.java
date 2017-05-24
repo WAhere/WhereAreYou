@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//»ñµÃËùÓĞµÄ×é¼ş
+		//è·å–æ‰€æœ‰ç»„ä»¶çš„é—®é¢˜
 		final EditText editNumber = (EditText)this.findViewById(R.id.editNumber);
 		final Button btnPhone = (Button)this.findViewById(R.id.btnPhone);
 		final Button btnSms = (Button)this.findViewById(R.id.btnSms);
@@ -31,20 +31,21 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				if(AppContext.isPhone()){
 					AppContext.setPhone(false);
-					//btnPhone.setTextColor(0XFF0000FF);
 					btnPhone.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-					btnPhone.setText("¼à¿ØÊÖ»ú");	
+					btnPhone.setText("ç›‘æ§æ‰‹æœº");	
 					btnPhone.setBackgroundResource(R.drawable.e1);
 					//btnPhone.getBackground().setAlpha(255);
+					
+					
 					
 				}else{
 					AppContext.setPhone(true);
 					btnPhone.setTextColor(Color.BLACK);
-					btnPhone.setText("Í£Ö¹¼à¿ØÊÖ»ú");
+					btnPhone.setText("Í£Ö¹ï¿½ï¿½ï¿½ï¿½Ö»ï¿½");
 					btnPhone.setBackgroundResource(R.drawable.e12);
+					
 					//btnPhone.getBackground().setAlpha(100);
 					
 					
@@ -60,38 +61,20 @@ public class MainActivity extends Activity {
 					if(AppContext.isSms()){
 						AppContext.setSms(false);
 						btnSms.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-						btnSms.setText("¼à¿Ø¶ÌĞÅ");
+						btnSms.setText("ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½");
 						btnSms.setBackgroundResource(R.drawable.e2);
 						//btnSms.getBackground().setAlpha(250);
 					}else{
 						AppContext.setSms(true);
 						btnSms.setTextColor(Color.BLACK);
-						btnSms.setText("Í£Ö¹¼à¿Ø¶ÌĞÅ");						
+						btnSms.setText("Í£Ö¹ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½");						
 						btnSms.setBackgroundResource(R.drawable.e23);
 						
 					}
 				}
 		});
 		
-		btnCallBack.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if(AppContext.isCallback()){
-					AppContext.setCallback(false);
-					btnCallBack.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-					btnCallBack.setText("»Ø²¦µç»°");
-					btnCallBack.setBackgroundResource(R.drawable.e3);
-					}else{
-						AppContext.setCallback(true);
-						btnCallBack.setTextColor(Color.BLACK);
-						btnCallBack.setText("Í£Ö¹»Ø²¦µç»°");
-						btnCallBack.setBackgroundResource(R.drawable.e32);
-					}
-				
-			}
-		});
+
 		
 		btnRing.setOnClickListener(new OnClickListener() {
 			
@@ -101,12 +84,12 @@ public class MainActivity extends Activity {
 				if(AppContext.isRing()){
 					AppContext.setRing(false);
 					btnRing.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-					btnRing.setText("ÏìÁå");
+					btnRing.setText("ï¿½ï¿½ï¿½ï¿½");
 					btnRing.setBackgroundResource(R.drawable.e4);
 				}else{
 					AppContext.setRing(true);
 					btnRing.setTextColor(Color.BLACK);
-					btnRing.setText("Í£Ö¹ÏìÁå");
+					btnRing.setText("Í£Ö¹ï¿½ï¿½ï¿½ï¿½");
 					btnRing.setBackgroundResource(R.drawable.e42);
 				}
 				
@@ -121,12 +104,12 @@ public class MainActivity extends Activity {
 				if(AppContext.isVibra()){
 					AppContext.setVibra(false);
 					btnVibra.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));//////////////
-					btnVibra.setText("Õğ¶¯");
+					btnVibra.setText("ï¿½ï¿½");
 					btnVibra.setBackgroundResource(R.drawable.e5);
 				}else{
 					AppContext.setVibra(true);
 					btnVibra.setTextColor(Color.BLACK);
-					btnVibra.setText("Í£Ö¹Õğ¶¯");
+					btnVibra.setText("Í£Ö¹ï¿½ï¿½");
 					btnVibra.setBackgroundResource(R.drawable.e52);
 				}
 			}
@@ -139,7 +122,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				if(AppContext.isListen()){
 					AppContext.setListen(false);
-					btnListen.setText("¿ªÊ¼¼à¿Ø");
+					btnListen.setText("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½");
 					btnListen.setTextColor(Color.RED);
 					if(intent!=null){
 					stopService(intent);
@@ -147,24 +130,24 @@ public class MainActivity extends Activity {
 				}else{
 					String number = editNumber.getText().toString();
 					if(number.equals("")){
-						Toast.makeText(MainActivity.this, "ÇëÊäÈëµç»°ºÅÂë", 3000).show();
+						Toast.makeText(MainActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç»°ï¿½ï¿½ï¿½ï¿½", 3000).show();
 						return ;
 					}
 					else if(AppContext.isPhone()||AppContext.isSms()||AppContext.isCallback()
 							||AppContext.isRing()||AppContext.isVibra()){
 					AppContext.setListen(true);
 					btnListen.setTextColor(Color.BLACK);
-					btnListen.setText("Í£Ö¹¼à¿Ø");
+					btnListen.setText("Í£Ö¹ï¿½ï¿½ï¿½");
 					//btnListen.getBackground().setAlpha(0);
 					
-					//Æô¶¯·şÎñ
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					intent = new Intent();
 					
 					AppContext.setNumber(editNumber.getText().toString());
 					intent.setClass(MainActivity.this, ListenService.class);
 					startService(intent);
 					}else{
-						Toast.makeText(MainActivity.this, "¸çÃÇ£¬ºÃ´õÑ¡Ò»¸ö", 3000).show();
+						Toast.makeText(MainActivity.this, "ï¿½ï¿½ï¿½Ç£ï¿½ï¿½Ã´ï¿½Ñ¡Ò»ï¿½ï¿½", 3000).show();
 					}
 				}
 			}
