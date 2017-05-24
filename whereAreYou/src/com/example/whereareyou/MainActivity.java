@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//获取所有组件的问题
+		// 获取所有组件的问题
 		final EditText editNumber = (EditText)this.findViewById(R.id.editNumber);
 		final Button btnPhone = (Button)this.findViewById(R.id.btnPhone);
 		final Button btnSms = (Button)this.findViewById(R.id.btnSms);
@@ -40,15 +40,15 @@ public class MainActivity extends Activity {
 					
 					
 					
-				}else{
+				}
+				else{
 					AppContext.setPhone(true);
 					btnPhone.setTextColor(Color.BLACK);
 					btnPhone.setText("ֹͣ����ֻ�");
 					btnPhone.setBackgroundResource(R.drawable.e12);
 					
 					//btnPhone.getBackground().setAlpha(100);
-					
-					
+	
 				}
 			}
 		});
@@ -64,7 +64,8 @@ public class MainActivity extends Activity {
 						btnSms.setText("��ض���");
 						btnSms.setBackgroundResource(R.drawable.e2);
 						//btnSms.getBackground().setAlpha(250);
-					}else{
+					}
+					else{
 						AppContext.setSms(true);
 						btnSms.setTextColor(Color.BLACK);
 						btnSms.setText("ֹͣ��ض���");						
@@ -84,7 +85,8 @@ public class MainActivity extends Activity {
 					btnCallBack.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
 					btnCallBack.setText("�ز��绰");
 					btnCallBack.setBackgroundResource(R.drawable.e3);
-					}else{
+					}
+				else{
 						AppContext.setCallback(true);
 						btnCallBack.setTextColor(Color.BLACK);
 						btnCallBack.setText("ֹͣ�ز��绰");
@@ -104,7 +106,8 @@ btnRing.setOnClickListener(new OnClickListener() {
 					btnRing.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
 					btnRing.setText("����");
 					btnRing.setBackgroundResource(R.drawable.e4);
-				}else{
+				}
+				else{
 					AppContext.setRing(true);
 					btnRing.setTextColor(Color.BLACK);
 					btnRing.setText("ֹͣ����");
@@ -124,7 +127,8 @@ btnRing.setOnClickListener(new OnClickListener() {
 					btnVibra.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));//////////////
 					btnVibra.setText("��");
 					btnVibra.setBackgroundResource(R.drawable.e5);
-				}else{
+				}
+				else{
 					AppContext.setVibra(true);
 					btnVibra.setTextColor(Color.BLACK);
 					btnVibra.setText("ֹͣ��");
@@ -145,7 +149,8 @@ btnRing.setOnClickListener(new OnClickListener() {
 					if(intent!=null){
 					stopService(intent);
 					}
-				}else{
+				}
+				else{
 					String number = editNumber.getText().toString();
 					if(number.equals("")){
 						Toast.makeText(MainActivity.this, "������绰����", 3000).show();
@@ -164,7 +169,8 @@ btnRing.setOnClickListener(new OnClickListener() {
 					AppContext.setNumber(editNumber.getText().toString());
 					intent.setClass(MainActivity.this, ListenService.class);
 					startService(intent);
-					}else{
+					}
+					else{
 						Toast.makeText(MainActivity.this, "���ǣ��ô�ѡһ��", 3000).show();
 					}
 				}

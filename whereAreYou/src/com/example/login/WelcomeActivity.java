@@ -35,6 +35,8 @@ public class WelcomeActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
+		//创建加载你要的布局文件，也就是你看到的页面菜单，你按手机menu按键时出现的那个菜单;布局填充气，填充你自己设计的menu;
+		//如果菜单已经存在，则会将项目添加到操作栏。
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}
