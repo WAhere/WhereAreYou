@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// 获取所有组件的问题
+		// 获取所有的组件问题
 		final EditText editNumber = (EditText)this.findViewById(R.id.editNumber);
 		final Button btnPhone = (Button)this.findViewById(R.id.btnPhone);
 		final Button btnSms = (Button)this.findViewById(R.id.btnSms);
@@ -31,24 +31,27 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				if(AppContext.isPhone()){
+				// TODO Auto-generated method stub
+				if(AppContext.isPhone())
+				{
 					AppContext.setPhone(false);
+					//btnPhone.setTextColor(0XFF0000FF);
 					btnPhone.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
 					btnPhone.setText("监控手机");	
 					btnPhone.setBackgroundResource(R.drawable.e1);
 					//btnPhone.getBackground().setAlpha(255);
-					
-					
-					
+					//手机里获得的背景透明度为满值
+
 				}
-				else{
+				else
+				{
 					AppContext.setPhone(true);
 					btnPhone.setTextColor(Color.BLACK);
-					btnPhone.setText("ֹͣ����ֻ�");
+					btnPhone.setText("停止监控手机");
 					btnPhone.setBackgroundResource(R.drawable.e12);
 					
 					//btnPhone.getBackground().setAlpha(100);
-	
+					//手机里获得的背景透明度为20/51，半透明
 				}
 			}
 		});
@@ -57,20 +60,20 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// TODO Auto-generated method stub 系统自动生成代码
 					if(AppContext.isSms()){
 						AppContext.setSms(false);
 						btnSms.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-						btnSms.setText("��ض���");
+						btnSms.setText("监控短信");
 						btnSms.setBackgroundResource(R.drawable.e2);
 						//btnSms.getBackground().setAlpha(250);
+						//短信服务使用getBackground().setAlpha来改变透明度后，关联的透明度也会跟着被改变。此处应为高透明度
 					}
 					else{
 						AppContext.setSms(true);
 						btnSms.setTextColor(Color.BLACK);
-						btnSms.setText("ֹͣ��ض���");						
+						btnSms.setText("停止监控短信");						
 						btnSms.setBackgroundResource(R.drawable.e23);
-						
 					}
 				}
 		});
@@ -83,13 +86,13 @@ public class MainActivity extends Activity {
 				if(AppContext.isCallback()){
 					AppContext.setCallback(false);
 					btnCallBack.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-					btnCallBack.setText("�ز��绰");
+					btnCallBack.setText("回拨电话");
 					btnCallBack.setBackgroundResource(R.drawable.e3);
 					}
 				else{
 						AppContext.setCallback(true);
 						btnCallBack.setTextColor(Color.BLACK);
-						btnCallBack.setText("ֹͣ�ز��绰");
+						btnCallBack.setText("停止回拨电话");
 						btnCallBack.setBackgroundResource(R.drawable.e32);
 					}
 				
@@ -104,13 +107,13 @@ btnRing.setOnClickListener(new OnClickListener() {
 				if(AppContext.isRing()){
 					AppContext.setRing(false);
 					btnRing.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));
-					btnRing.setText("����");
+					btnRing.setText("响铃");
 					btnRing.setBackgroundResource(R.drawable.e4);
 				}
 				else{
 					AppContext.setRing(true);
 					btnRing.setTextColor(Color.BLACK);
-					btnRing.setText("ֹͣ����");
+					btnRing.setText("停止响铃");
 					btnRing.setBackgroundResource(R.drawable.e42);
 				}
 				
@@ -125,13 +128,13 @@ btnRing.setOnClickListener(new OnClickListener() {
 				if(AppContext.isVibra()){
 					AppContext.setVibra(false);
 					btnVibra.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));//////////////
-					btnVibra.setText("��");
+					btnVibra.setText("震动");
 					btnVibra.setBackgroundResource(R.drawable.e5);
 				}
 				else{
 					AppContext.setVibra(true);
 					btnVibra.setTextColor(Color.BLACK);
-					btnVibra.setText("ֹͣ��");
+					btnVibra.setText("停止震动");
 					btnVibra.setBackgroundResource(R.drawable.e52);
 				}
 			}
@@ -144,7 +147,7 @@ btnRing.setOnClickListener(new OnClickListener() {
 				// TODO Auto-generated method stub
 				if(AppContext.isListen()){
 					AppContext.setListen(false);
-					btnListen.setText("��ʼ���");
+					btnListen.setText("开始监控");
 					btnListen.setTextColor(Color.RED);
 					if(intent!=null){
 					stopService(intent);
@@ -153,25 +156,27 @@ btnRing.setOnClickListener(new OnClickListener() {
 				else{
 					String number = editNumber.getText().toString();
 					if(number.equals("")){
-						Toast.makeText(MainActivity.this, "������绰����", 3000).show();
+						Toast.makeText(MainActivity.this, "请输入电话号码", 3000).show();
 						return ;
 					}
 					else if(AppContext.isPhone()||AppContext.isSms()||AppContext.isCallback()
 							||AppContext.isRing()||AppContext.isVibra()){
 					AppContext.setListen(true);
 					btnListen.setTextColor(Color.BLACK);
-					btnListen.setText("ֹͣ���");
+					btnListen.setText("停止监控");
 					//btnListen.getBackground().setAlpha(0);
+					//监听器服务，解释同上
 					
-					//��������
+					//启动服务
 					intent = new Intent();
 					
 					AppContext.setNumber(editNumber.getText().toString());
 					intent.setClass(MainActivity.this, ListenService.class);
 					startService(intent);
 					}
+					// 当没有选择功能的时候，跳出提示
 					else{
-						Toast.makeText(MainActivity.this, "���ǣ��ô�ѡһ��", 3000).show();
+						Toast.makeText(MainActivity.this, "哥们，好歹选一个", 3000).show();
 					}
 				}
 			}
