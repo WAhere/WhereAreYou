@@ -10,18 +10,32 @@ import android.os.Vibrator;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;		//导入电话窃听器管理包
 
-public class AppUitl {
+public class AppUitl 
+{
 	//打电话的功能模块
-	public void call(Context context, String number){
-		Intent intent = new Intent();
-		intent.setAction(Intent.ACTION_CALL);
-		Uri data = Uri.parse("tel:"+number);
-		intent.setData(data);
+	public void call(Context context, String number)
+	{
+		Intent intent = new Intent();			//定义
+		intent.setAction(Intent.ACTION_CALL);	//活动
+		//这里的parse方法返回的是一个URI类型，通过这个URI可以访问一个网络上或者是本地的资源，
+		//android中指定了uri是tel:number号码是对应的打电话的资源。
+		Uri data = Uri.parse("tel:"+number);	
+		intent.setData(data);					//表示获取数据
+		/*在一个Activity环境中用该方法启动一个一个activity不会出任何问题，
+		 * 但在activity之外的其他组件中使用该方法就会出现错误！
+		 * Context 中有一个startActivity方法，Activity继承自Context，
+		 * 重载了startActivity方法。如果使用Activity的 startActivity方法，
+		 * 不会有任何限制，而如果使用Context的startActivity方法的话，
+		 * 就需要开启一个新的task，遇到上 面那个异常的，
+		 * 都是因为使用了Context的startActivity方法。解决办法是，加一个flag。
+		 */
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);
 	}
+
 	//发短信的功能模块
-	public void sendSms(String number , String sms){
+	public void sendSms(String number , String sms)
+	{
 		SmsManager manager = SmsManager.getDefault();
 		manager.sendTextMessage(number, null, sms, null, null);
 	}
