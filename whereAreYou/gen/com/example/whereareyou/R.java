@@ -37,8 +37,10 @@ public final class R {
         public static final int e5=0x7f02000d;
         public static final int e52=0x7f02000e;
         public static final int e55=0x7f02000f;
-        public static final int ic_launcher=0x7f020010;
-        public static final int whereareu=0x7f020011;
+        public static final int fengmian=0x7f020010;
+        public static final int ic_launcher=0x7f020011;
+        public static final int logo=0x7f020012;
+        public static final int whereareu=0x7f020013;
     }
     public static final class id {
         public static final int LinearLayout2=0x7f090000;
