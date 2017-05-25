@@ -83,7 +83,7 @@
         android:background="@drawable/e5"
         android:drawableLeft="@android:drawable/ic_popup_sync"
         android:paddingLeft="32dp"
-        android:text="震动"
+        android:text="振动"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="20sp" />
 

@@ -148,14 +148,14 @@ public class MainActivity extends Activity
 				{
 					AppContext.setVibra(false);
 					btnVibra.setTextColor(android.graphics.Color.argb(255, 141, 209, 239));//////////////
-					btnVibra.setText("震动");
+					btnVibra.setText("振动");
 					btnVibra.setBackgroundResource(R.drawable.e5);
 				}
 				else
 				{
 					AppContext.setVibra(true);
 					btnVibra.setTextColor(Color.BLACK);
-					btnVibra.setText("停止震动");
+					btnVibra.setText("停止振动");
 					btnVibra.setBackgroundResource(R.drawable.e52);
 				}
 			}

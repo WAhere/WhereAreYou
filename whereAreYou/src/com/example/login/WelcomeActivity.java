@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.Window;
 
 //新建类WelcomeActivity继承Activity
 public class WelcomeActivity extends Activity
@@ -19,6 +20,8 @@ public class WelcomeActivity extends Activity
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//去除加载界面黑条
 		setContentView(R.layout.activity_welcome);
 		
 		final Intent intent = new Intent(this, com.example.whereareyou.MainActivity.class);
