@@ -39,7 +39,10 @@
         <activity
             android:name="com.example.login.LoginActivity"
             android:label="@string/title_activity_login" >
-            
+        </activity>
+        <activity
+            android:name="com.example.login.SignupActivity"
+            android:label="@string/title_activity_signup" >
         </activity>
     </application>
 

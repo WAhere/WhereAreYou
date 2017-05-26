@@ -1,5 +1,6 @@
 package com.example.login;
 
+import com.example.database.MyDatabaseHelper;
 import com.example.whereareyou.MainActivity;
 import com.example.whereareyou.R;
 import com.example.whereareyou.R.layout;
@@ -17,10 +18,13 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
+	private MyDatabaseHelper dbHelper;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		dbHelper = new MyDatabaseHelper(this, "UserStore.db", null, 2);
 		
 		final EditText edt_user = (EditText)this.findViewById(R.id.edit_user);
 		final EditText edt_pwd = (EditText)this.findViewById(R.id.edt_pass);
@@ -41,6 +45,20 @@ public class LoginActivity extends Activity {
 				}
 			}
 		});*/
+		btn_signup.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				dbHelper.getWritableDatabase();
+				final Intent intent = new Intent();
+				/*Bundle bundle = new Bundle();
+		    	bundle.putString("user",user1);
+		    	intent.putExtras(bundle);*/
+				intent.setClass(LoginActivity.this, SignupActivity.class);
+				startActivity(intent);
+			}
+		});
 		
 		btn_signin.setOnClickListener(new OnClickListener() {
 			@Override

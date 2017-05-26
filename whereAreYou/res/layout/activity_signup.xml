@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/zhuce"
+    android:orientation="vertical"
+    tools:context=".SignupActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="Welcome to "
+        android:textColor="@android:color/holo_orange_dark"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:text="whereAU"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/edit_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/icon_user"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="user name(3~10chars)"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/edt_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/account_icon"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="password(6~15chars)"
+        android:inputType="textPassword"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/account_icon"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="confirm password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btn_signin"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/corner"
+        android:text="Sign up Now" />
+
+</LinearLayout>
