@@ -56,8 +56,8 @@ public class SignupActivity extends Activity {
 				else
 				{
 				
-					Toast.makeText(SignupActivity.this, "注册成功,正在跳转主界面...", Toast.LENGTH_SHORT).show();
-					final Intent intent = new Intent(SignupActivity.this, com.example.whereareyou.MainActivity.class);
+					Toast.makeText(SignupActivity.this, "注册成功,正在跳转登录界面...", Toast.LENGTH_SHORT).show();
+					final Intent intent = new Intent(SignupActivity.this, com.example.login.LoginActivity.class);
 					Timer timer = new Timer();
 					TimerTask task = new TimerTask() 
 					{
