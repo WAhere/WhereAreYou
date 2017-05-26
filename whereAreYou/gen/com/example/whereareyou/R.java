@@ -53,7 +53,6 @@ public final class R {
         public static final int zhuce=0x7f02001a;
     }
     public static final class id {
-        public static final int EditText01=0x7f0a000f;
         public static final int LinearLayout1=0x7f0a0000;
         public static final int LinearLayout2=0x7f0a0006;
         public static final int action_settings=0x7f0a0011;
@@ -63,11 +62,12 @@ public final class R {
         public static final int btnRing=0x7f0a000b;
         public static final int btnSms=0x7f0a0009;
         public static final int btnVibra=0x7f0a000c;
-        public static final int btn_signin=0x7f0a0004;
         public static final int btn_signup=0x7f0a0005;
+        public static final int btn_signupnow=0x7f0a0004;
         public static final int editNumber=0x7f0a0007;
-        public static final int edit_user=0x7f0a0002;
-        public static final int edt_pass=0x7f0a0003;
+        public static final int edit_reg_user=0x7f0a0002;
+        public static final int edt_reg_conf=0x7f0a000f;
+        public static final int edt_reg_pass=0x7f0a0003;
         public static final int imageView1=0x7f0a0010;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a000e;

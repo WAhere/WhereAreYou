@@ -30,7 +30,7 @@
         android:textSize="40sp" />
 
     <EditText
-        android:id="@+id/edit_user"
+        android:id="@+id/edit_reg_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -40,11 +40,11 @@
         android:ems="10"
         android:gravity="center"
         android:hint="user name(3~10chars)"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@android:color/black"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/edt_pass"
+        android:id="@+id/edt_reg_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -55,11 +55,11 @@
         android:gravity="center"
         android:hint="password(6~15chars)"
         android:inputType="textPassword"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@android:color/black"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/EditText01"
+        android:id="@+id/edt_reg_conf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -70,11 +70,11 @@
         android:gravity="center"
         android:hint="confirm password"
         android:inputType="textPassword"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@android:color/black"
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/btn_signin"
+        android:id="@+id/btn_signupnow"
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:layout_marginLeft="50dp"

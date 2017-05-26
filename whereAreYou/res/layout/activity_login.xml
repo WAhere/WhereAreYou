@@ -17,16 +17,15 @@
         android:textSize="40sp" />
 
     <EditText
-        android:id="@+id/edit_user"
+        android:id="@+id/edit_reg_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginTop="30dp"
-        android:drawableLeft="@drawable/icon_user"
-        android:ems="10"
-        android:gravity="center"
         android:hint="User"
+        android:drawableLeft="@drawable/icon_user"
+        android:gravity="center"
         android:textColor="@android:color/holo_green_light"
         android:textSize="25sp" >
 
@@ -34,7 +33,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/edt_pass"
+        android:id="@+id/edt_reg_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -49,7 +48,7 @@
         android:textSize="25sp" />
 
     <Button
-        android:id="@+id/btn_signin"
+        android:id="@+id/btn_signupnow"
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:layout_marginLeft="50dp"

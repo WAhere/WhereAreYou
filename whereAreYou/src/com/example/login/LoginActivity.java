@@ -26,13 +26,13 @@ public class LoginActivity extends Activity {
 		
 		dbHelper = new MyDatabaseHelper(this, "UserStore.db", null, 2);
 		
-		final EditText edt_user = (EditText)this.findViewById(R.id.edit_user);
-		final EditText edt_pwd = (EditText)this.findViewById(R.id.edt_pass);
-		final Button btn_signin = (Button)this.findViewById(R.id.btn_signin);
+		final EditText edt_user = (EditText)this.findViewById(R.id.edit_reg_user);
+		final EditText edt_pwd = (EditText)this.findViewById(R.id.edt_reg_pass);
+		final Button btn_signin = (Button)this.findViewById(R.id.btn_signupnow);
 		final Button btn_signup = (Button)this.findViewById(R.id.btn_signup);
 		
-		final String user = edt_user.getText().toString().trim();
-		final String pwd = edt_pwd.getText().toString().trim();
+		/*final String user = edt_user.getText().toString().trim();
+		final String pwd = edt_pwd.getText().toString().trim();*/
 		
 		/*edt_user.setOnClickListener(new OnClickListener() {
 			
@@ -64,11 +64,13 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(user == "")
+				final String user = edt_user.getText().toString().trim();
+				final String pwd = edt_pwd.getText().toString().trim();
+				if(user.equals(""))
 				{
 					Toast.makeText(LoginActivity.this, "请输入用户名！", Toast.LENGTH_SHORT).show();
 				}
-				else if(pwd == "")					
+				else if(pwd.equals(""))					
 				{
 					Toast.makeText(LoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
 				}
