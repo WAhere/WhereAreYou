@@ -1,5 +1,6 @@
 package com.example.login;
 
+
 import com.example.database.MyDatabaseHelper;
 import com.example.whereareyou.MainActivity;
 import com.example.whereareyou.R;
@@ -9,6 +10,8 @@ import com.example.whereareyou.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -81,13 +84,41 @@ public class LoginActivity extends Activity {
 				}*/
 				else
 				{
-					final Intent intent = new Intent();
-					/*Bundle bundle = new Bundle();
-			    	bundle.putString("user",user1);
-			    	intent.putExtras(bundle);*/
-					intent.setClass(LoginActivity.this, MainActivity.class);
-					startActivity(intent);
-					//LoginActivity.this.finish();
+					//从后台数据库中查找数据
+					SQLiteDatabase db = dbHelper.getWritableDatabase();
+					Cursor cursor = db.rawQuery("select * from User where user = ? ", new String[] {user});
+					
+					
+					if(cursor.moveToFirst()){
+						
+						//找到了注册过的用户之后进行密码判断
+						Cursor cursor1 = db.rawQuery("select * from User where user = ? and pwd = ? ", new String[] {user,pwd});
+						if(cursor1.moveToNext())
+						{
+							Intent intent = new Intent();
+							Bundle bundle = new Bundle();											
+						/*Bundle bundle = new Bundle();
+				    	bundle.putString("user",user1);
+				    	intent.putExtras(bundle);*/
+						intent.setClass(LoginActivity.this, MainActivity.class);
+						startActivity(intent);
+						//LoginActivity.this.finish();
+						}
+						else
+						{
+							Toast.makeText(LoginActivity.this, "用户名和密码不匹配，请重新输入！", Toast.LENGTH_SHORT).show();
+						}
+					
+					}
+					else 
+					
+					{
+						Toast.makeText(LoginActivity.this, "该用户名未进行过注册，请先注册！", Toast.LENGTH_SHORT).show();
+						//edt_user.setText("");
+						//edt_user.setText("");
+						//edt_pwd.setText("");
+					}
+					cursor.close();
 				}
 			}
 		});

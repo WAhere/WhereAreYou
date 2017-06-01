@@ -40,7 +40,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="user name(3~10chars)"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="15sp" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:gravity="center"
         android:hint="password(6~15chars)"
         android:inputType="textPassword"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="15sp" />
 
     <EditText
@@ -70,7 +70,7 @@
         android:gravity="center"
         android:hint="confirm password"
         android:inputType="textPassword"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="15sp" />
 
     <Button
