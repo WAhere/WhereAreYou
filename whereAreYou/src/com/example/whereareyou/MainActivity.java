@@ -204,7 +204,7 @@ public class MainActivity extends Activity
 					// 当没有选择功能的时候，跳出提示
 					else
 					{
-						Toast.makeText(MainActivity.this, "哥们，好歹选一个", 3000).show();
+						Toast.makeText(MainActivity.this, "请至少选择一项监控功能！", 3000).show();
 					}
 				}
 			}

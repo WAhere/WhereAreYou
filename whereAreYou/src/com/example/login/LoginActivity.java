@@ -8,31 +8,48 @@ import com.example.whereareyou.R.layout;
 import com.example.whereareyou.R.menu;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
 	private MyDatabaseHelper dbHelper;
+	private SharedPreferences pref;
+	private SharedPreferences.Editor editor;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
 		dbHelper = new MyDatabaseHelper(this, "UserStore.db", null, 2);
+		pref = PreferenceManager.getDefaultSharedPreferences(this);
 		
 		final EditText edt_user = (EditText)this.findViewById(R.id.edit_reg_user);
 		final EditText edt_pwd = (EditText)this.findViewById(R.id.edt_reg_pass);
 		final Button btn_signin = (Button)this.findViewById(R.id.btn_signupnow);
 		final Button btn_signup = (Button)this.findViewById(R.id.btn_signup);
+		
+		final CheckBox  rememberPass = (CheckBox)this.findViewById(R.id.checkBox1);
+		boolean isRemember = pref.getBoolean("remember_password", false);
+		if(isRemember)
+		{
+			String account = pref.getString("account", "");
+			String password = pref.getString("password", "");
+			edt_user.setText(account);
+			edt_pwd.setText(password);
+			rememberPass.setChecked(true);
+		}
 		
 		/*final String user = edt_user.getText().toString().trim();
 		final String pwd = edt_pwd.getText().toString().trim();*/
@@ -53,6 +70,7 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
 				dbHelper.getWritableDatabase();
 				final Intent intent = new Intent();
 				/*Bundle bundle = new Bundle();
@@ -69,6 +87,19 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated method stub
 				final String user = edt_user.getText().toString().trim();
 				final String pwd = edt_pwd.getText().toString().trim();
+				editor = pref.edit();	
+				if(rememberPass.isChecked())
+				{
+					editor.putBoolean("remember_password", true);
+					editor.putString("account", user);
+					editor.putString("password", pwd);
+					
+				}
+				else
+				{
+					editor.clear();
+				}
+				editor.commit();
 				if(user.equals(""))
 				{
 					Toast.makeText(LoginActivity.this, "请输入用户名！", Toast.LENGTH_SHORT).show();

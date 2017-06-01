@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.Window;
 
-//新建类WelcomeActivity继承Activity
 public class WelcomeActivity extends Activity
 {
 	@Override
@@ -31,11 +30,11 @@ public class WelcomeActivity extends Activity
 		    @Override
 		    public void run() 
 		    {
-		    	startActivity(intent);		//执行 
-		    	WelcomeActivity.this.finish();		//结束
+		    	startActivity(intent);		
+		    	WelcomeActivity.this.finish();		
 		    }
 		};
-		timer.schedule(task, 1000 * 2); 
+		timer.schedule(task, 1000 * 3); 
 	}
 
 	@Override
