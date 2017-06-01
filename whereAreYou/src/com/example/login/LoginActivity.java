@@ -19,16 +19,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//创建名为LoginActivity的活动继承Activity
 public class LoginActivity extends Activity {
 
 	private MyDatabaseHelper dbHelper;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{	//activity一个生命周期
+		//表示调用父类的构造函数
 		super.onCreate(savedInstanceState);
+		//初始化布局，即把xml布局文件和activity关联起来
 		setContentView(R.layout.activity_login);
 		
 		dbHelper = new MyDatabaseHelper(this, "UserStore.db", null, 2);
-		
+		//获取文本与按钮信息
 		final EditText edt_user = (EditText)this.findViewById(R.id.edit_reg_user);
 		final EditText edt_pwd = (EditText)this.findViewById(R.id.edt_reg_pass);
 		final Button btn_signin = (Button)this.findViewById(R.id.btn_signupnow);
@@ -48,7 +52,12 @@ public class LoginActivity extends Activity {
 				}
 			}
 		});*/
-		btn_signup.setOnClickListener(new OnClickListener() {
+		
+		/* setOnclicklistener方法传的参数是OnClickListener接口，
+		 * 需要new一个接口当做参数传入，对象调用方法都是对象名.
+		 */
+		btn_signup.setOnClickListener(new OnClickListener() 
+		{
 			
 			@Override
 			public void onClick(View v) {
@@ -110,8 +119,7 @@ public class LoginActivity extends Activity {
 						}
 					
 					}
-					else 
-					
+					else 	
 					{
 						Toast.makeText(LoginActivity.this, "该用户名未进行过注册，请先注册！", Toast.LENGTH_SHORT).show();
 						//edt_user.setText("");
@@ -124,13 +132,11 @@ public class LoginActivity extends Activity {
 		});
 	}
 	
-
-
+	//自动生成，选项菜单
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}
-
 }
