@@ -141,7 +141,7 @@ public class LoginActivity_ extends Activity {
 				    	intent.putExtras(bundle);*/
 						intent.setClass(LoginActivity_.this, MainActivity.class);
 						startActivity(intent);
-						//LoginActivity.this.finish();
+						LoginActivity_.this.finish();
 						}
 						else
 						{
