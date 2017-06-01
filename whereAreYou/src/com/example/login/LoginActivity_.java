@@ -22,6 +22,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//新建活动
 public class LoginActivity_ extends Activity {
 
 	private MyDatabaseHelper dbHelper;
@@ -40,6 +41,7 @@ public class LoginActivity_ extends Activity {
 		dbHelper = new MyDatabaseHelper(this, "UserStore.db", null, 2);
 		pref = PreferenceManager.getDefaultSharedPreferences(this);
 		
+		//获取用户名与密码文本和登录与注册按钮情况
 		final EditText edt_user = (EditText)this.findViewById(R.id.edit_reg_user);
 		final EditText edt_pwd = (EditText)this.findViewById(R.id.edt_reg_pass);
 		final Button btn_signin = (Button)this.findViewById(R.id.btn_signupnow);
@@ -50,6 +52,7 @@ public class LoginActivity_ extends Activity {
 		
 		final CheckBox  rememberPass = (CheckBox)this.findViewById(R.id.checkBox1);
 		boolean isRemember = pref.getBoolean("remember_password", false);
+		//确认是否成功？
 		if(isRemember)
 		{
 			String account = pref.getString("account", "");
@@ -58,32 +61,17 @@ public class LoginActivity_ extends Activity {
 			edt_pwd.setText(password);
 			rememberPass.setChecked(true);
 		}
-		
-		/*final String user = edt_user.getText().toString().trim();
-		final String pwd = edt_pwd.getText().toString().trim();*/
-		
-		/*edt_user.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if(user == "User")
-				{
-					edt_user.setText("");
-				}
-			}
-		});*/
+		/* setOnclicklistener方法传的参数是OnClickListener接口，
+		 * 需要new一个接口当做参数传入，对象调用方法都是对象名.
+		 */
 		btn_signup.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
 				dbHelper.getWritableDatabase();
 				final Intent intent = new Intent();
-				/*Bundle bundle = new Bundle();
-		    	bundle.putString("user",user1);
-		    	intent.putExtras(bundle);*/
+				
 				intent.setClass(LoginActivity_.this, SignupActivity.class);
 				startActivity(intent);
 			}
@@ -100,8 +88,7 @@ public class LoginActivity_ extends Activity {
 				{
 					editor.putBoolean("remember_password", true);
 					editor.putString("account", user);
-					editor.putString("password", pwd);
-					
+					editor.putString("password", pwd);		
 				}
 				else
 				{
@@ -116,11 +103,7 @@ public class LoginActivity_ extends Activity {
 				{
 					Toast.makeText(LoginActivity_.this, "请输入密码！", Toast.LENGTH_SHORT).show();
 				}
-				/*else if(pwd != "1")
-				{
-					Toast.makeText(LoginActivity.this, "密码错误，请重新输入！", Toast.LENGTH_SHORT).show();
-					edt_pwd.setText("");
-				}*/
+				
 				else
 				{
 					//从后台数据库中查找数据
@@ -136,9 +119,7 @@ public class LoginActivity_ extends Activity {
 						{
 							Intent intent = new Intent();
 							Bundle bundle = new Bundle();											
-						/*Bundle bundle = new Bundle();
-				    	bundle.putString("user",user1);
-				    	intent.putExtras(bundle);*/
+						
 						intent.setClass(LoginActivity_.this, MainActivity.class);
 						startActivity(intent);
 						LoginActivity_.this.finish();
@@ -146,16 +127,11 @@ public class LoginActivity_ extends Activity {
 						else
 						{
 							Toast.makeText(LoginActivity_.this, "用户名和密码不匹配，请重新输入！", Toast.LENGTH_SHORT).show();
-						}
-					
+						}		
 					}
-					else 
-					
+					else 		
 					{
 						Toast.makeText(LoginActivity_.this, "该用户名未进行过注册，请先注册！", Toast.LENGTH_SHORT).show();
-						//edt_user.setText("");
-						//edt_user.setText("");
-						//edt_pwd.setText("");
 					}
 					cursor.close();
 				}
@@ -163,8 +139,7 @@ public class LoginActivity_ extends Activity {
 		});
 	}
 	
-
-
+	//自定义选项菜单
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

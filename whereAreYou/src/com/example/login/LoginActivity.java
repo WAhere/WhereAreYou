@@ -42,7 +42,6 @@ public class LoginActivity extends Activity {
 
 
 		//获取文本与按钮信息
-
 		final EditText edt_user = (EditText)this.findViewById(R.id.edit_reg_user);
 		final EditText edt_pwd = (EditText)this.findViewById(R.id.edt_reg_pass);
 		final Button btn_signin = (Button)this.findViewById(R.id.btn_signupnow);

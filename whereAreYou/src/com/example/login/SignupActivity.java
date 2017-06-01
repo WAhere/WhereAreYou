@@ -49,7 +49,7 @@ public class SignupActivity extends Activity {
 				final String user = edt_reg_user.getText().toString().trim();
 				final String pwd = edt_reg_pwd.getText().toString().trim();
 				final String repwd = edt_reg_conf.getText().toString().trim();
-				
+				//注册界面显示
 				if(user.equals(""))
 				{
 					Toast.makeText(SignupActivity.this, "请输入用户名！", Toast.LENGTH_SHORT).show();
@@ -69,16 +69,12 @@ public class SignupActivity extends Activity {
 					//后台添加数据
 					SQLiteDatabase db = dbHelper.getWritableDatabase();
 					ContentValues values = new ContentValues();
-								
-					
-					Cursor cursor = db.rawQuery("select * from User where user = ? ", new String[] {user});
-					
+
+					Cursor cursor = db.rawQuery("select * from User where user = ? ", new String[] {user});	
 					
 					if(cursor.moveToFirst()){
 						Toast.makeText(SignupActivity.this, "该用户已进行过注册，请重新输入用户名！", Toast.LENGTH_SHORT).show();
 						edt_reg_user.setText("");
-						/*edt_reg_pwd.setText("");
-						edt_reg_conf.setText("");*/
 					}
 						
 						else
@@ -94,8 +90,7 @@ public class SignupActivity extends Activity {
 					    	bundle.putString("user",user);
 					    	bundle.putString("pwd", pwd);
 					    	intent.putExtras(bundle);
-							//intent.setClass(SignupActivity.this, com.example.login.LoginActivity_.class);
-							
+						
 							Timer timer = new Timer();
 							TimerTask task = new TimerTask() 
 							{
@@ -107,10 +102,7 @@ public class SignupActivity extends Activity {
 							    }
 							};
 							timer.schedule(task, 1000 * 2);
-						}
-					
-					 
-					
+						} 			
 				}
 			}
 		});
